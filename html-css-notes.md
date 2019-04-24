@@ -41,12 +41,20 @@
 	  padding: 20px;
 	  width: 400px;
 	}
- ```
+	
+  ```
+
 * According to the box model, the total width of an element can be calculated using the following formula:
   `margin-right + border-right + padding-right + width + padding-left + border-left + margin-left`
 
 * The *margin* property allows us to set the amount of space that surrounds an element. Margins for an element fall outside of any border and are completely transparent in color.
 * The *padding* property is very similar to the margin property; however, it falls inside of an element’s border, should an element have a border. The padding property is used to provide spacing directly within an element.
+
+* The width and height define how much horizontal and vertical space it needs for the content area of the box, which may or may not include the padding and borders. In most cases, the browser can determine the width and height automatically.
+* The padding is an area that surrounds the content area of the box and separates the content from its border. It is typically opaque and hides anything that it overlays.
+* The border is a boundary that surrounds the padding.
+* The margin is a transparent area that lies outside the border and supplies separation between elements.
+* The display property determines how the browser lays out an element relative to its neighbors.
 
 ### Border Box
 ```CSS
@@ -55,4 +63,98 @@
 	}
 ```
 * the border-box value alters the box model so that any border or padding property values are included within the width and height of an element. When using the border-box value, if an element has a width of 400 pixels, a padding of 20 pixels around every side, and a border of 10 pixels around every side, the actual width will remain 400 pixels.
+
+# The Visual Formatting Model
+* The `display` property has alomst thirty values, but `block`, `inline-block`, and `inline` are most used.
+
+## Block elements
+* _block elements_ (headings, paragraphs, sections, tables, forms, etc) by default occupy all horizontal space available within its container, with nothing to its left or right.
+* If a page contains 3 block elements directly inside the `body` and nothing else, then all three elements will display one above the other like a stack of blocks.
+* `block` elements use the box properties (width, height, margin, padding, border) to determine size of the element.
+* Though a block element takes up an entire row, its width is not altered to do so. If a `div` is 500px in a 900px `section`, the remaining 400px will remain empty.
+* Most elements are block by default!
+* 
+## Inline elements
+* Inline elements provide some semantic meaning to content (`span`, `b`, `strong`, `em`,*`img`* etc)
+* inline elements handle the dimension properties (width, height, padding, border, and margin) differently from the way block elements treat them.
+* Browsers handle left and right margins and padding for inline elements in the same way as for block elements, but they process other box model properties differently.
+* For inline elements, browsers:
+  * ignore the width and height properties (except with the img element), but instead use values computed from the element content.
+  * ignore top and bottom margins.
+  * padding and borders may extend into rows above and below but will not interfere or shift them but overlap them. See [example](http://d3jtzah944tvom.cloudfront.net/202/images/lesson_2/the-visual-formatting-model-01.png)
+
+## Inline-Block elements
+* `inline-block` elements act just like `block` elements except they do *not* take up the entire row by default. Thus, you can place `inline-block` elements side-by-side.
+* `inline-block` elements observe the `width` and `height` properties. Padding, margin, and boder all work as they do with `block` elements.
+* Note: *`img` elements are NOT `inline-block`. They are `inline` by default.*
+* Browsers use the `vertical-align` property to perform vertical alignment for adjacent `inline-block` elements.
+
+
+## Box Sizing
+* The `box-sizing` property can have two values: `content-box` and `border-box`.
+* The `content-box` setting is default in all modern browsers. This is the standard box model. Padding and border are not included in element height or width
+* With `border-box`, width and height are calculated inclusive of padding and border.
+* The `border-box` setting is "best" since it simplifies the math a front-end developer must do. For example, if we have a box with a width of 50% and padding of 12px; border-box ensures that it's precisely 50% of the container width, not 50% plus 24-pixels.
+* The code below can be used to set `border-box` everywhere.
+  ```CSS
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+  ```
+
+# Margins and Padding
+
+## Margin collapse
+* Top and bottom margins "collapse" between `block` elements, meaning if you position two adjacent `block`s one above the other, the margin between them isn't thesum of the top and bottom margins. Instead, the margin _collapses_ to the larger of the two.
+* Margin collapse only happens with top and bottom, not left and right margins.
+
+# Dimensions
+* `px`, `rem`, `%` called measurement units
+
+## Absolute Units
+*  CSS distinguishes between a physical pixel (also device pixel or display pixel) and what we call the *CSS reference pixel* (or CSS pixel or reference pixel).
+*  The size of a reference pixel is the size of a pixel on a display that has 96 pixels per inch. 
+
+## Relative Units
+## Ems and Rems
+* Ems and rems are proportional to the calculated and root font sizes, respectively. The calculated font size is the height of the current font in pixels. 
+* The root font size is the height of the base font for the document: the font size designated for the html element. 
+* If the calculated font size is 20 pixels and the root font size is 16 pixels, then 1.5em is 30px (20 * 1.5), while 1.5rem is 24px (16 * 1.5).
+* You may find it easier to work with rems instead of ems since rems are consistent. Once you've set the root font size for a document, `1.5rem` means the same thing everywhere in that document. This relationship isn't true for ems; they compound.
+
+## Auto
+* The `auto` specificier, as a `width` or `length` tells the browser to try to fit the entire element including its margins in its container.
+* As a left or right `margin` on a block element, it tells the browser to push the element all the way to the right or left.
+  * You can center a `block` element by setting right and left `margin` to `auto`.
+* As a top or bottom `margin`, `auto` is equal to 0.
+* Helpful diagram illustrating difference between `width: auto` and `width: 100` [here](http://d3jtzah944tvom.cloudfront.net/202/images/lesson_2/measurement-units-02.png)
+
+# Images
+
+## JPG
+* The jpg format uses a _lossy_ form of compression, in other words, it trades off image quality for file size.
+* If you edit a jpg, the resulting file has less detail than the original. If you edit again it loses even more detail.
+* You can set loss levels when saving a jpeg.
+* In general, jpgs don't work well for CSS backgroung images.
+
+## PNG
+* PNGs use compression but it is non-lossy. Lack of lossiness means larger file size.
+* pngs are ideal for images that need their details.
+
+## The img element
+* `<img>` is a self-closing tag. It has two attributes: `src` and `alt`
+
+### Figure and Figcaption
+* If you want a caption for your image, you could use a `<p>` tag or group them in a `<div>` but this would not be semantic.
+* The `figure` and `figcaption` elements can help
+  ```css
+  <figure>
+    <img src="masthead.jpg" alt="Sunset over the forest" />
+    <figcaption>The sun sets over the dense forest</figcaption>
+  </figure>
+  ```
 
