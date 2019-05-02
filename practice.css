@@ -1,0 +1,15 @@
+th[scope="col"] {
+  color: green;
+}
+
+th[scope="row"] {
+  color: blue;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid gray;
+}

@@ -158,3 +158,301 @@
   </figure>
   ```
 
+# Lists
+## Unordered Lists
+    ```css
+    <ul>
+      <li>Red</li>
+      <li>Orange</li>
+      <li>Yellow</li>
+      <li>Green</li>
+      <li>Blue</li>
+      <li>Indigo</li>
+      <li>Violet</li>
+    </ul>
+    ```
+## Ordered Lists
+    ```css
+    <ol>
+      <li>Red</li>
+      <li>Orange</li>
+      <li>Yellow</li>
+      <li>Green</li>
+      <li>Blue</li>
+      <li>Indigo</li>
+      <li>Violet</li>
+    </ol>
+    ```
+## Description Lists
+* *_Description Lists_* contain a list of terms and definitions. Each item in the list includeds one or more terms and one or more definitions.
+* Examples of description lists include dictionaries and bibliographies.
+    ```css
+    <dl>
+      <dt>Unordered</dt>
+      <dd>A simple list with bullets.</dd>
+      <dd>A plain list with no bullets or sequence numbers.</dd>
+    
+      <dt>Ordered</dt>
+      <dd>A simple list with sequence numbers or letters.</dd>
+    
+      <dt>Description</dt>
+      <dt>Definition</dt>
+      <dd>A list with terms and definitions.</dd>
+    </dl>
+    ```
+## Navigation Menus
+* Developers often use unordered lists to construct navigation menues, both vertical and horizontal.
+* An example:
+    ```css
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Team</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+    ```
+* Note the `list-style-type` property can be used to remove bullets from lists in CSS.
+
+## Making Lists Horizontal
+* To make a list horizontal:
+  1. Set `li` to `display: inline-block`
+  2. Distibute the width of `li` to evenly fit the width of the `ul` or `ol` element. For example, if `ol` has a width of `100%`, with four `li`s, set a width of `25%`.
+  3. Set `ul` or `ol` `font-size` to `0` to get rid of whitespace between `li`s. Then set the `font-size` for `li` elements.
+
+# Tables
+* The <table> tag defines a table.
+* The <tr> tag defines a single row in a table.
+* The <td> tag defines a single cell of content in a table. Each row includes zero or more cells.
+* The <th> tag defines a single heading. The first cell in a row or column is typically a heading, but this is not required.
+* <thead>, <tbody>, and <tfoot> each define a set of one or more rows that comprise the header, body, and footer rows of a table. These are also not required.
+* You can also add the scope attribute to identify th elements as row (scope="row") or column (scope="col") headings.
+* Example:
+```html
+<table>
+  <thead>                              <!-- heading rows -->
+    <tr>                                 <!-- row 1 -->
+      <th scope="col">Color Name</th>      <!-- column header 1 -->
+      <th scope="col">Color Hex</th>       <!-- column header 2 -->
+      <th scope="col">Color Decimal</th>   <!-- column header 3 -->
+    </tr>
+  </thead>
+
+  <tbody>                              <!-- body rows -->
+    <tr>                                 <!-- row 2 -->
+      <th scope="row">red</th>             <!-- row header (column 1) -->
+      <td>#f00</td>                        <!-- data cell 1 (column 2) -->
+      <td>255, 0, 0</td>                   <!-- data cell 2 (column 3) -->
+    </tr>
+
+    <tr>                                 <!-- row 3 -->
+      <th scope="row">green</th>           <!-- row header (column 1) -->
+      <td>#0f0</td>                        <!-- data cell 1 (column 2) -->
+      <td>0, 255, 0</td>                   <!-- data cell 2 (column 3) -->
+    </tr>
+
+    <tr>                                 <!-- row 4 -->
+      <th scope="row">blue</th>            <!-- row header (column 1) -->
+      <td>#00f</td>                        <!-- data cell 1 (column 2) -->
+      <td>0, 0, 255</td>                   <!-- data cell 2 (column 3) -->
+    </tr>
+  </tbody>
+
+  <tfoot>                              <!-- footer -->
+    <tr>                                 <!-- row 5 -->
+      <td>name</td>                        <!-- data cell 1 (column 1) -->
+      <td>#rrggbb</td>                     <!-- data cell 2 (column 2) -->
+      <td>red, green, blue</td>            <!-- data cell 3 (column 3) -->
+    </tr>
+  </tfoot>
+</table>
+```
+# Forms
+
+## The `form` tag
+* The `form` tag is the parent for all form-related tags.
+* The most important `form` attributes are `action` and `method`.
+* A form should take at least one `input`, `textarea`, or `select` tag. Without one, the form is useless.
+
+### The `method` attribute
+* The `method` attribute tells the browser whether it should use the HTTP GET or HTTP POST method when sending the data.
+* Use `method="get"` when requesting info from the server. Use `method="post"` when updating data on the server.
+
+### The `action` and `formaction` attributes
+* `action` provides the URL to which the browser sends the request.
+* Individual action items (`button` and input type="submit" elements) in a form can overrive the form's `action` value by using the `formaction` attribute.
+
+## The `fieldset` tag
+* The `fieldset` is an optional tag. It groups related data. Most browsers draw a border around fieldset groups but, of course, this can be undone with CSS.
+* Generally, the `fieldset` tag is used to provide semantic data to the browswer and to provide devs with a helpful CSS reference for layout/styling.
+* ex: 
+  ```html
+  <form action="/login" method="post">
+    <fieldset>
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+    </fieldset>
+    <fieldset>
+      <input type="submit" name="Save" />
+      <input type="submit" name="Forgot Password" formaction="/forgot" />
+    </fieldset>
+  </form>
+  ```
+## The `input` tag
+* The input tag is self-closing.
+* It describes a "control" or a "widget".
+* Each `input` requires a `type` attribute.
+* Most `input` widgets require a `name` attribute. This allows the browser to indentify each data item and allows back-end apps to reference them.
+  ```html
+  <input type="text" name="city" />
+  <input type="password" name="password" />
+  <input type="submit" value="Save" />
+  ```
+## The `label` tag
+* The `label` tag provides a way to associate some identifying text with an input field.
+  ```html
+  <label for="phone">Phone</label>
+  <input type="text" id="phone" name="phone_number" />
+  ```
+  In this example, the broswer uses the `for` attribute and the `id` attribute to associate the `label` and the `input`.
+* Can also use `label` tags as containers:
+  ```html
+  <label>
+    Phone
+    <input type="text" name="phone" />
+  </label>
+  ```
+
+## A complete form example
+  ```html
+  <form action="#" method="post">
+    <fieldset>
+      <h1>Log In</h1>
+      <fieldset>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" />
+      </fieldset>
+  
+      <fieldset>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </fieldset>
+  
+      <fieldset>
+        <input type="submit" value="Log In" />
+        <input type="submit" value="Delete account"
+               formaction="/account/delete" />
+        <input type="submit" value="Forgot password"
+               formaction="/account/password" />
+        <input type="reset" value="Reset" />
+      </fieldset>
+    </fieldset>
+  </form>
+  ```
+  
+## Common `input` `type`s
+
+### `text`
+Simple text entry field. Can use `maxlength` attribute to specify input's maximum length.
+
+### `password`
+Single-line text field with obscured input values. Also can use `maxlength` attribute.
+
+### `email`
+Allows email addresses of the form `username@domain`. Browsers will try to prevent inaccurately formatted emails. But devs should perform their own validation.
+
+### `tel`
+Allows input of a phone number. No validation, as phone numbers vary so much from country to country.
+
+### `checkbox`
+Allows the user to choose one or more of a series of yes/no-type options.
+The `value` attribute gives the value the form sends to the server. The `checked` attribute pre-selects checkboxes.
+The `name` attribute names a set of related checkboxes.
+The broswer will send a `name=value` pair for each selected box and no value at all for unselected boxes.
+
+### `radio`
+Lets user choose zero or one from a list of options.
+Takes `name`, `value`, and `checked` attributes as well.
+
+### `submit`
+Creates a button that the user can click to submit the contents of the form to the server.
+The `action` attribute in the `form` tag typically provides the URL of the server. This can be overriden with the `formaction` attribute.
+
+### `reset`
+A button that the user can click to reset the contents of the form to its default values. *Clicking reset does not send a request to the server.*
+
+## Cool Attributes to Keep in Mind
+
+### `placeholder`
+For text, shows display only text when its empty.
+
+### `required`
+Form won't submit until a value for this input control is present.
+
+## Select and Textarea
+
+### `textarea`
+Lets users input multiple lines of text. Unlike `text` inputs, `textarea` retains all carriage returns, newlines, and other whitespace characters.
+No `value` attribute. Default values should be placed within open and closed tags.
+```html
+<form action="#" method="post">
+  <fieldset>
+    <label>
+      Comment
+      <textarea name="tweet" rows="5" cols="40">I got 20% off my first purchase at joesburgers.com! You can too!</textarea>
+    </label>
+  </fieldset>
+</form>
+```
+`textarea` uses `rows` and `cols` attribute to control the height and width of the box. *This is overriden by the CSS `height` and `width` properties.
+
+### `select` element
+`select` creates a drop-down list of options from which the user can select zero or more optios.
+Two possible child elements, `option` and `optgroup`.
+Uses `name` attribute like other form elements but uses the `option` elements within it to describe the values shown to the user and sent to the server.
+
+* The `option` element
+  An `option` defines one of the choices a user can make in a `select` tag. *A `select` element is useless without `option`s.*
+  Options can have a `value` attribute. If no `value` attribute is present, the browser sends the text contained by the `option` element to the server instead.
+  `select` elemetns often have a disabled placeholder option that says something like "Choose one". Typically the value is an empty string.
+
+  ```html
+  <form action="#" method="post">
+    <fieldset>
+      <label>
+        Colors
+        <select name="color">
+          <option value="" disabled selected>Choose one</option>
+          <option value="#f00">Red</option>
+          <option value="#0f0">Green</option>
+          <option value="#00f">Blue</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+  ```
+
+  By default, select lets the user choose precisely one option or leave the option unselected if it contains a disabled selected option as shown above. 
+  If you add the `multiple` attribute, the user can select more than one option.
+  
+  ```html
+  <form action="#" method="post">
+    <fieldset>
+      <label>
+        Choose Your Favorite Movies
+        <select name="favorites" multiple size="4">
+          <option value="" disabled selected>Select One or More</option>
+          <option>2001: A Space Odyssey</option>
+          <option>Arrival</option>
+          <option>Close Encounters of the Third Kind</option>
+          <option>District 9</option>
+          <option>Guardians of the Galaxy</option>
+          <option>Interstellar</option>
+          <option>Serenity</option>
+          <option>Silent Running</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+  ```

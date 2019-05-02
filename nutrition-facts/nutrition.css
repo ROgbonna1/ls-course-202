@@ -1,0 +1,91 @@
+body {
+  font-family: "Helvetica", "Arial";
+}
+
+h1 {
+  font-family: "Franklin Gothic Heavy", "Arial";
+  margin-top: 0px;
+  height: 15px;
+}
+
+.wrapper {
+  border: 2px solid black;
+  box-sizing: border-box;
+  width: 325px;
+  padding: 7px 10px 10px 10px;
+}
+
+header {
+  border-bottom: 10px solid black;
+}
+
+header div {
+  height: 20px;
+}
+
+.vitamins {
+  border-top: 6px solid black;
+}
+
+.row {
+  display: block;
+}
+
+section > div {
+  display: inline-block;
+}
+
+section div:nth-child(2) {
+  float: right;
+}
+
+.serving-size {
+  border-bottom: 6px solid black;
+}
+
+.sub-row, .row:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+.sub-row {
+  margin-left: 20px;
+}
+
+li {
+  list-style: symbols(symbolic "*");
+}
+
+footer {
+  margin-top: 5px;
+  padding: 5px 0px;
+  border-top: 1px solid black;
+}
+
+footer section:first-child div:first-child {
+  height: 70px;
+  width: 1%;
+  padding-left: 0px;
+}
+
+footer section:first-child div:nth-child(2) {
+  float: right;
+  width: 96%;
+  padding-left: 0;
+}
+
+table {
+  width: 100%;
+  padding-top: 7px;
+  font-size: 0.75rem;
+  text-align: left;
+  border-spacing: 0;
+}
+
+.sub-row-table {
+  padding-left: 5%;
+}
+
+th {
+  font-weight: normal;
+  border-bottom: 1px solid black;
+}
