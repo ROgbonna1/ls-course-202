@@ -1,0 +1,35 @@
+body {
+  background-color: green;
+  font-size: 3px;
+}
+
+article, aside, footer {
+  margin: 0;
+}
+
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #cecece;
+}
+
+article {
+  box-sizing: border-box;
+  width: 70%;
+  padding: 1rem;
+  float: left;
+  background-color: blue;
+}
+
+aside {
+  box-sizing: border-box;
+  width: 30%;
+  padding: 1rem;
+  float: right;
+  background-color: red;
+}
+
+footer {
+  clear: both;
+  background-color: purple;
+}
