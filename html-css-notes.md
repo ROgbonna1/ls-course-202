@@ -511,3 +511,67 @@ Uses `name` attribute like other form elements but uses the `option` elements wi
 ### `position: fixed`
 * Fixed positioningsets an element to a fixed position within the window. 
 * The element does not move if the user scrolls the page. (Think navigation bar at the top of a page.)
+
+# Responsive Design
+## Media Quesries
+* Media queries typically define styles that change based on the current size of the browser window
+* Example:
+  ```css
+      a {
+      color: #f00;
+    }
+    
+    @media (max-width: 480px) {
+      a {
+        color: #06c;
+      }
+    }
+  ```
+  Note: Any styles you put inside the media query block will apply when the screen width is 480px or less, as specified by the (max-width: 480px) query.
+
+### Mobile-First
+* most developers start out by styling the mobile site first (the so-called "mobile-first approach"), and then use several media queries to handle progressively larger devices:
+  ```css
+      /* CSS for all cell phones and shared cross-browser CSS */
+    
+    @media screen and (min-width: 481px) {
+      /* CSS for tablets and larger */
+    }
+    
+    @media screen and (min-width: 961px) {
+      /* CSS for small desktop and laptop screens and larger */
+    }
+    
+    @media screen and (min-width: 1501px) {
+      /* CSS for large laptop and desktop displays */
+    }
+    
+    @media print {
+      /* CSS for printers */
+    }
+  ```
+* The mobile-first approach frequently results in faster downloads on mobile devices, while the desktop-first approach results in slower downloads. Most developers consider the mobile-first approach to be best-practice.
+* The pixel cut-offs are called *_breakpoints_*
+* To emulate devices in Google Chrome:
+    1. Open the inspector.
+    2. Click the emulation icon in the top bar (it looks like a smartphone resting atop a tablet in Chrome v64 - other versions may differ).
+    3. Several drop-downs will appear above the web page.
+    4. Select iPhone 8 from the "Responsive" drop-down.
+    5. Refresh the page to ensure the page loads everything it needs
+
+* *If you design your application with responsiveness in mind, you must put the following `<meta>` element in the `<head>` part of the `<html>`*:
+  ```html
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  ```
+  It tells mobile devices how to handle that page; without it, those devices often display a miniaturized version of the page instead of showing the desired mobile device page described by your media queries and CSS.
+
+# CSS Resets
+A _reset_ is a bit of CSS that "resets" your CSS to a known state in a variety of different browswers.
+Common resets include:
+* [Eric Meyer's reset](https://meyerweb.com/eric/tools/css/reset/)
+* [Normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css)
+* [Tantek Celik's undohtml.css](https://cssreset.com/scripts/undohtml-css-tantek-celik/)
+
+# Working with Design Files
+* Design files are almost always a _PSD_ file, or a "Photoshop Document."
+* 

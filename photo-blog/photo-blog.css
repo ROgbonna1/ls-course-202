@@ -1,0 +1,88 @@
+@import 'whitespace-reset.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: linear-gradient(#d1dbbd, #fcfff5);
+  min-height: 100vh;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+header h1 {
+  font-size: 34px;
+  font-weight: normal;
+  background: transparent url('logo.png') 0 0 no-repeat;
+  padding: 45px 0 15px 115px;
+  float: left;
+}
+
+header, main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  padding: 20px 20px 0 20px;
+  overflow: auto;
+}
+
+nav {
+  padding-top: 80px;
+}
+
+nav ul {
+  float: right;
+}
+
+nav li {
+  display: inline-block;
+  width: 130px;
+  background-color: white;
+  padding: 16px 0 16px 0;
+  text-align: center;
+  font-size: 18px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #9ab1a4;
+}
+
+nav .active {
+  background-color: #9ab1a4;
+}
+
+nav .active a {
+  color: white; 
+}
+
+main {
+  background-color: white;
+  padding: 30px;
+}
+
+main h1 {
+  font-size: 30px;
+  font-weight: normal;
+  margin: 40px 0 20px 0;
+}
+
+main p {
+  font-size: 18px;
+  padding: 0 0 20px;
+}
+
+main figure {
+  float: right;
+}
