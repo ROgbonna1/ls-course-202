@@ -60,6 +60,9 @@ main {
   padding: 70px 90px;
 }
 
+main p, section {
+  padding: 0 130px;
+}
 footer {
   background-color: #e7e7e7;
   padding: 90px 0 80px;
@@ -131,4 +134,28 @@ footer li a.email {
 
 footer li a.instagram {
   background-position: 0 -138px;
+}
+
+figure {
+  padding: 50px 0;
+}
+
+figure:first-of-type {
+  padding-top: 0;
+}
+
+.team {
+  display: flex;
+  justify-content: space-between;
+}
+
+.team figure {
+  padding-top: 135px;
+}
+
+.team figcaption {
+  color: #3e98b2;
+  font-size: 24px;
+  font-weight: 600;
+  padding-top: 30px;  
 }
